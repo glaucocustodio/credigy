@@ -1,0 +1,106 @@
+RSpec.describe Credigy::Request do
+  describe '#call' do
+    let(:response_class) { double(:response_class) }
+    let(:response) { double(:response) }
+
+    before do
+      expect(subject).to receive_messages(response_class: response_class, response: response)
+      expect(response_class).to receive(:new).with(response, subject).and_return(response)
+    end
+
+    context 'successfully response' do
+      let(:response) { double(:response, success?: true) }
+      it do
+        expect(subject.call).to eq(response)
+      end
+    end
+
+    context 'unsuccessfully response' do
+      let(:response) { double(:response, success?: false, body: 'whatever') }
+      it do
+        expect(subject).to receive(:operation).and_return(:qualquer_operacao)
+        expect { subject.call }.to(
+          raise_error(RuntimeError, 'Falha ao chamar operação qualquer_operacao: whatever')
+        )
+      end
+    end
+  end
+
+  describe "#response_class" do
+    it do
+      stub_const("Credigy::RequestResponse", Class.new)
+      expect(subject).to receive(:class).and_return(Credigy::Request)
+      expect(subject.response_class).to eq(Credigy::RequestResponse)
+    end
+  end
+
+  describe "#response" do
+    let(:client) { double(:client) }
+    let(:operation) { double(:operation) }
+    let(:message) { double(:message) }
+
+    it do
+      expect(subject).to receive_messages(client: client, operation: operation, message: message)
+      expect(client).to receive(:call).with(operation, message: message).and_return(:whatever)
+      expect(subject.response).to eq(:whatever)
+    end
+  end
+
+  describe "#client" do
+    it do
+      allow(subject).to receive(:config_options).and_return(foo: :bar)
+      expect(Savon).to receive(:client).with(foo: :bar)
+      subject.client
+    end
+  end
+
+  describe "#operation" do
+    it do
+      expect { subject.operation }.to raise_error(NotImplementedError)
+    end
+  end
+
+  describe '#message' do
+    it do
+      expect(subject.message).to eq({})
+    end
+  end
+
+  describe '#config_options' do
+    it do
+      expect(subject).to receive(:basic_config).and_return(foo: :bar)
+      expect(subject).to receive(:extra_config_options).and_return(baz: :foo)
+      expect(subject.config_options).to eq(foo: :bar, baz: :foo)
+    end
+  end
+
+  describe '#basic_config' do
+    it do
+      expect(Credigy).to receive_message_chain('configuration.verbose').and_return(false)
+      expect(subject).to receive(:wsdl).and_return("whatever")
+      expect(subject.basic_config).to eq(wsdl: "whatever", log: false)
+    end
+  end
+
+  describe '#extra_config_options' do
+    it do
+      expect(subject).to receive(:soap_header).and_return('soap_header')
+      expect(subject.extra_config_options).to eq(
+        { soap_header: 'soap_header', env_namespace: :soapenv, namespace_identifier: :cred }
+      )
+    end
+  end
+
+  describe '#soap_header' do
+    it do
+      expect(subject.soap_header).to eq({})
+    end
+  end
+
+  describe '#wsdl' do
+    it do
+      expect(Credigy).to receive_message_chain('configuration.wsdl').and_return('wsdl')
+      expect(subject.wsdl).to eq('wsdl')
+    end
+  end
+end
