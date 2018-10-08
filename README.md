@@ -26,11 +26,61 @@ Ou instale você mesmo:
 
 ## Chamadas implementadas
 
-- AcceptLegalTerms
-- GeneratePromise
-- GetAccounts
-- GetProviders
-- Login
+- [Login](#login)
+- [AcceptLegalTerms](#acceptlegalterms)
+- [GeneratePromise](#generatepromise)
+- [GetAccounts](#getaccounts)
+- [GetProviders](#getproviders)
+
+### Login
+
+```ruby
+response = Credigy::Login.new(user: 'user', password: '123456', cpf: '987654321').call
+authorization_token = response.authorization_token
+```
+
+### AcceptLegalTerms
+
+```ruby
+Credigy::LegalTerms.new(authorization_token).call
+```
+
+### GeneratePromise
+
+```ruby
+Credigy::Promise.new(
+  authorization_token,
+  accounts: ['123'], installments: 3, first_installment_date: Date.today, agreement_value: 1580.7
+).call
+```
+
+### GetAccounts
+
+```ruby
+response = Credigy::Account.new(authorization_token).call
+response.all # array de contas
+```
+
+### GetProviders
+
+```ruby
+response = Credigy::Provider.new(authorization_token).call
+response.all # array de provedores
+```
+
+## Configuração (opcional)
+
+É possível configurar o comportamento dessa gem via:
+
+```ruby
+Credigy.configure do |config|
+  config.verbose = true # default é false
+  config.env = :production # qualquer outro symbol será considerado ambiente de desenvolvimento
+  config.wsdl = 'http://proxy.meusite.com/wsdl' # caso queira adicionar um proxy
+end
+```
+
+Se estiver no Rails, esse arquivo pode ser colocado em `config/initializers/credigy.rb`.
 
 ## Development
 
