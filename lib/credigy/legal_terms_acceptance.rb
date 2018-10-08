@@ -1,8 +1,8 @@
 require_relative './authorized'
-require_relative './legal_terms_response'
+require_relative './legal_terms_acceptance_response'
 
 module Credigy
-  class LegalTerms < Authorized
+  class LegalTermsAcceptance < Authorized
     def operation
       :accept_legal_terms
     end

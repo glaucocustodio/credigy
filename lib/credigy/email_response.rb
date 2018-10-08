@@ -1,9 +1,9 @@
 require_relative './response'
 
 module Credigy
-  class AccountResponse < Response
+  class EmailResponse < Response
     def all
-      Array(body[:accounts][:account])
+      Array(body[:emails][:email])
     end
   end
 end

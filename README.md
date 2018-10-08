@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/glaucocustodio/credigy/badge.svg)](https://coveralls.io/github/glaucocustodio/credigy)
 [![Maintainability](https://api.codeclimate.com/v1/badges/e87c5a00b82c525bb7de/maintainability)](https://codeclimate.com/github/glaucocustodio/credigy/maintainability)
 
-Um wrapper para o serviço SOAP da Credigy.
+Um cliente (não oficial) para o serviço SOAP da Credigy.
 
 Consulte o [manual](https://github.com/glaucocustodio/credigy/blob/master/lib/manual/WebServiceCredigyV1.6.pdf) para mais informações.
 
@@ -30,7 +30,9 @@ Ou instale você mesmo:
 - [AcceptLegalTerms](#acceptlegalterms)
 - [GeneratePromise](#generatepromise)
 - [GetAccounts](#getaccounts)
+- [GetEmails](#getemails)
 - [GetProviders](#getproviders)
+- [SaveEmail](#saveemail)
 
 ### Login
 
@@ -42,7 +44,7 @@ authorization_token = response.authorization_token
 ### AcceptLegalTerms
 
 ```ruby
-Credigy::LegalTerms.new(authorization_token).call
+Credigy::LegalTermsAcceptance.new(authorization_token).call
 ```
 
 ### GeneratePromise
@@ -61,11 +63,24 @@ response = Credigy::Account.new(authorization_token).call
 response.all # array de contas
 ```
 
+### GetEmails
+
+```ruby
+response = Credigy::Email.new(authorization_token).call
+response.all # array de emails
+```
+
 ### GetProviders
 
 ```ruby
 response = Credigy::Provider.new(authorization_token).call
 response.all # array de provedores
+```
+
+### SaveEmail
+
+```ruby
+Credigy::EmailCreation.new(authorization_token, address: 'foo@test.com').call
 ```
 
 ## Configuração (opcional)

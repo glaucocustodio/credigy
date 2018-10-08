@@ -1,6 +1,6 @@
 require_relative './response'
 
 module Credigy
-  class LegalTermsResponse < Response
+  class EmailCreationResponse < Response
   end
 end

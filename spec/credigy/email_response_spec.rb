@@ -1,4 +1,4 @@
-RSpec.describe Credigy::ProviderResponse do
+RSpec.describe Credigy::EmailResponse do
   subject { described_class.new(:raw_response, :requester) }
 
   describe '#all' do
@@ -7,7 +7,7 @@ RSpec.describe Credigy::ProviderResponse do
     end
 
     context 'body returns an array' do
-      let(:body) { { providers: { provider: [:whatever] } } }
+      let(:body) { { emails: { email: [:whatever] } } }
 
       it do
         expect(subject.all).to eq([:whatever])
@@ -15,8 +15,7 @@ RSpec.describe Credigy::ProviderResponse do
     end
 
     context 'body does not return an array' do
-      let(:body) { { providers: { provider: :whatever } } }
-
+      let(:body) { { emails: { email: :whatever } } }
       it do
         expect(subject.all).to eq([:whatever])
       end
