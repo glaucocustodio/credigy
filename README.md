@@ -1,6 +1,12 @@
 # Credigy
 
+[![Build Status](https://travis-ci.org/glaucocustodio/credigy.svg?branch=master)](https://travis-ci.org/glaucocustodio/credigy)
+[![Coverage Status](https://coveralls.io/repos/github/glaucocustodio/credigy/badge.svg)](https://coveralls.io/github/glaucocustodio/credigy)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e87c5a00b82c525bb7de/maintainability)](https://codeclimate.com/github/glaucocustodio/credigy/maintainability)
+
 Um wrapper para o serviço SOAP da Credigy.
+
+Consulte o [manual](https://github.com/glaucocustodio/credigy/blob/master/lib/manual/WebServiceCredigyV1.6.pdf) para mais informações.
 
 ## Instalação
 
@@ -18,16 +24,15 @@ Ou instale você mesmo:
 
     $ gem install credigy
 
-## Uso
+## Chamadas implementadas
 
-Chamadas implementadas:
-
+- AcceptLegalTerms
 - GeneratePromise
 - GetAccounts
 - GetProviders
 - Login
 
-## Desenvolvimento
+## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
