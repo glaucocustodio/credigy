@@ -9,7 +9,7 @@ module Credigy
     end
 
     def response_class
-      "#{self.class}Response".constantize
+      Object.const_get("#{self.class}Response")
     end
 
     def response

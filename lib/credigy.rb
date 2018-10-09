@@ -9,7 +9,5 @@ require "credigy/promise"
 require "credigy/provider"
 require "credigy/legal_terms_acceptance"
 
-require 'active_support/all'
-
 module Credigy
 end

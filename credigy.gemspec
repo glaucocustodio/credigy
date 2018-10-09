@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Glauco Custódio"]
   spec.email         = ["glauco.custodio@gmail.com"]
 
-  spec.summary       = %q{Um wrapper para o serviço SOAP da Credigy}
-  spec.description   = %q{Um wrapper para o serviço SOAP da Credigy}
+  spec.summary       = %q{Um cliente (não oficial) para o serviço SOAP da Credigy}
+  spec.description   = %q{Um cliente (não oficial) para o serviço SOAP da Credigy}
   spec.homepage      = "https://github.com/glaucocustodio/credigy"
   spec.license       = "MIT"
 
@@ -30,7 +30,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'savon', '~> 2'
-  spec.add_dependency 'activesupport'
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
