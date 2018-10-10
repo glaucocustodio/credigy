@@ -2,6 +2,7 @@ require "credigy/version"
 
 require "credigy/config"
 require "credigy/account"
+require "credigy/campaign_negotiation"
 require "credigy/email"
 require "credigy/email_creation"
 require "credigy/login"

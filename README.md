@@ -30,6 +30,7 @@ Ou instale você mesmo:
 - [AcceptLegalTerms](#acceptlegalterms)
 - [GeneratePromise](#generatepromise)
 - [GetAccounts](#getaccounts)
+- [GetCampaignNegotiation](#getcampaignnegotiation)
 - [GetEmails](#getemails)
 - [GetProviders](#getproviders)
 - [SaveEmail](#saveemail)
@@ -61,6 +62,13 @@ Credigy::Promise.new(
 ```ruby
 response = Credigy::Account.new(authorization_token).call
 response.all # array de contas
+```
+
+### GetCampaignNegotiation
+
+```ruby
+response = Credigy::CampaignNegotiation.new(authorization_token, owner_id: 'z', accounts: ['y'], provider_ids: ['x']).call
+response.all # array de negociações possíveis
 ```
 
 ### GetEmails
