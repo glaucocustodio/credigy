@@ -7,7 +7,9 @@ module Credigy
     end
 
     def authorization_token
-      body[:authorization_token]
+      return body[:authorization_token] if body[:authorization_token]
+
+      raise "Token não gerado: #{raw_response.body}"
     end
   end
 end

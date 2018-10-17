@@ -12,7 +12,7 @@ RSpec.describe Credigy::Promise do
   describe '#message' do
     let(:params) do
       {
-        accounts: 'accounts',
+        accounts: ['123', '456'],
         installments: 'installments',
         first_installment_date: Date.today,
         agreement_value: 1500.95
@@ -21,7 +21,7 @@ RSpec.describe Credigy::Promise do
 
     it do
       expect(subject.message).to eq({
-        'cred:Accounts' => 'accounts',
+        'cred:Accounts' => '123;456',
         'cred:TotalInstallments' => 'installments',
         'cred:FirstInstallmentDate' => Date.today,
         'cred:TotalAgreementAmount' => 1500.95

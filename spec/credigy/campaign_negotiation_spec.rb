@@ -16,8 +16,8 @@ RSpec.describe Credigy::CampaignNegotiation do
     it do
       expect(subject.message).to eq({
         'cred:Ownerid' => 'owner_id',
-        'cred:Accounts' => [1],
-        'cred:Providers' => [3, 4]
+        'cred:Accounts' => '1',
+        'cred:Providers' => '3;4'
       })
     end
   end

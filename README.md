@@ -30,6 +30,7 @@ Ou instale você mesmo:
 - [AcceptLegalTerms](#acceptlegalterms)
 - [GeneratePromise](#generatepromise)
 - [GetAccounts](#getaccounts)
+- [GetBoleto](#getboleto)
 - [GetCampaignNegotiation](#getcampaignnegotiation)
 - [GetEmails](#getemails)
 - [GetProviders](#getproviders)
@@ -62,6 +63,13 @@ Credigy::Promise.new(
 ```ruby
 response = Credigy::Account.new(authorization_token).call
 response.all # array de contas
+```
+
+### GetBoleto
+
+```ruby
+response = Credigy::Boleto.new(authorization_token, debtor_agreement_id: '123', installment_number: '2').call
+response.pdf # pdf stream
 ```
 
 ### GetCampaignNegotiation
@@ -105,11 +113,21 @@ end
 
 Se estiver no Rails, esse arquivo pode ser colocado em `config/initializers/credigy.rb`.
 
-## Development
+## Desenvolvimento
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+### Testes
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+`rake spec`
+
+### Console
+
+`bundle console`
+
+### Release
+
+Atualize o número da versão em `version.rb` e rode:
+
+`bundle exec rake release`
 
 ## License
 
