@@ -11,8 +11,15 @@ module Credigy
     end
 
     def body
-      raw_response
-        .body["#{requester.operation}_response".to_sym]["#{requester.operation}_result".to_sym]
+      raw_response.body[root_key][sub_root_key]
+    end
+
+    def root_key
+      "#{requester.operation}_response".to_sym
+    end
+
+    def sub_root_key
+      "#{requester.operation}_result".to_sym
     end
   end
 end

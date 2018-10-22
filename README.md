@@ -33,6 +33,7 @@ Ou instale você mesmo:
 - [GetBoleto](#getboleto)
 - [GetCampaignNegotiation](#getcampaignnegotiation)
 - [GetEmails](#getemails)
+- [GetInstallments](#getinstallments)
 - [GetProviders](#getproviders)
 - [SaveEmail](#saveemail)
 
@@ -84,6 +85,13 @@ response.all # array de negociações possíveis
 ```ruby
 response = Credigy::Email.new(authorization_token).call
 response.all # array de emails
+```
+
+### GetInstallments
+
+```ruby
+response = Credigy::Installment.new(authorization_token, debtor_agreement_id: 'z').call
+response.all # installments
 ```
 
 ### GetProviders

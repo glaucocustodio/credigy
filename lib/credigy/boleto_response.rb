@@ -5,5 +5,9 @@ module Credigy
     def pdf
       body[:boleto]
     end
+
+    def sub_root_key
+      :ws_result_boleto
+    end
   end
 end

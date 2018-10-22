@@ -9,4 +9,10 @@ RSpec.describe Credigy::BoletoResponse do
       expect(subject.pdf).to eq('pdf')
     end
   end
+
+  describe '#sub_root_key' do
+    it do
+      expect(subject.sub_root_key).to eq(:ws_result_boleto)
+    end
+  end
 end
