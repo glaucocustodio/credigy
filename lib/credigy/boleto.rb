@@ -6,6 +6,7 @@ module Credigy
     attr_reader :params
 
     def initialize(authorization_token, **params)
+      @authorization_token = authorization_token
       @params = params
     end
 
