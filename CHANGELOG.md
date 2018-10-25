@@ -1,4 +1,4 @@
-### 0.1.2 (unreleased)
+### 0.1.2 (25/10/2018)
 
 * Implementa `GetInstallments`
 * Corrige passagem de token na classe `Boleto`
