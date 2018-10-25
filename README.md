@@ -34,6 +34,7 @@ Ou instale você mesmo:
 - [GetCampaignNegotiation](#getcampaignnegotiation)
 - [GetEmails](#getemails)
 - [GetInstallments](#getinstallments)
+- [GetLinhaDigitavel](#getlinhadigitavel)
 - [GetProviders](#getproviders)
 - [SaveEmail](#saveemail)
 
@@ -92,6 +93,13 @@ response.all # array de emails
 ```ruby
 response = Credigy::Installment.new(authorization_token, debtor_agreement_id: 'z').call
 response.all # installments
+```
+
+### GetLinhaDigitavel
+
+```ruby
+response = Credigy::Line.new(authorization_token, debtor_agreement_id: 'z', installment_number: 'y').call
+response.line # linha digitavel
 ```
 
 ### GetProviders

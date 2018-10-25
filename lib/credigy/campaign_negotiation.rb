@@ -16,8 +16,8 @@ module Credigy
     def message
       {
         'cred:Ownerid' => params[:owner_id],
-        'cred:Accounts' => Array(params[:accounts]).join(';'),
-        'cred:Providers' => Array(params[:provider_ids]).join(';')
+        'cred:Accounts' => Array.wrap(params[:accounts]).join(';'),
+        'cred:Providers' => Array.wrap(params[:provider_ids]).join(';')
       }
     end
   end

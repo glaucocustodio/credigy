@@ -23,7 +23,7 @@ module Credigy
 
     def message
       {
-        'cred:Accounts' => Array(params[:accounts]).join(';'),
+        'cred:Accounts' => Array.wrap(params[:accounts]).join(';'),
         'cred:TotalInstallments' => params[:installments],
         'cred:FirstInstallmentDate' => params[:first_installment_date],
         'cred:TotalAgreementAmount' => params[:agreement_value]

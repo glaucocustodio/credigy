@@ -7,18 +7,18 @@ RSpec.describe Credigy::ProviderResponse do
     end
 
     context 'body returns an array' do
-      let(:body) { { providers: { provider: [:whatever] } } }
+      let(:body) { { providers: { provider: [ { foo: 'bar' } ] } } }
 
       it do
-        expect(subject.all).to eq([:whatever])
+        expect(subject.all).to eq([ foo: 'bar' ])
       end
     end
 
     context 'body does not return an array' do
-      let(:body) { { providers: { provider: :whatever } } }
+      let(:body) { { providers: { provider: { foo: 'bar' } } } }
 
       it do
-        expect(subject.all).to eq([:whatever])
+        expect(subject.all).to eq([ { foo: 'bar' } ])
       end
     end
   end
