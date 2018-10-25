@@ -7,18 +7,26 @@ RSpec.describe Credigy::AccountResponse do
     end
 
     context 'body returns an array' do
-      let(:body) { { accounts: { account: [:whatever] } } }
+      let(:body) { { accounts: { account: [{ foo: 'bar' }] } } }
 
       it do
-        expect(subject.all).to eq([:whatever])
+        expect(subject.all).to eq([{ foo: 'bar' }])
       end
     end
 
     context 'body does not return an array' do
-      let(:body) { { accounts: { account: :whatever } } }
+      let(:body) { { accounts: { account: { foo: 'bar' } } } }
 
       it do
-        expect(subject.all).to eq([:whatever])
+        expect(subject.all).to eq([{ foo: 'bar' }])
+      end
+    end
+
+    context 'body does not contain the expected key' do
+      let(:body) { { foo: 'bar' } }
+
+      it do
+        expect(subject.all).to eq([])
       end
     end
   end

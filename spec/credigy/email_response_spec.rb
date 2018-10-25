@@ -7,17 +7,17 @@ RSpec.describe Credigy::EmailResponse do
     end
 
     context 'body returns an array' do
-      let(:body) { { emails: { email: [:whatever] } } }
+      let(:body) { { emails: { email: [{ foo: 'bar' }] } } }
 
       it do
-        expect(subject.all).to eq([:whatever])
+        expect(subject.all).to eq([{ foo: 'bar' }])
       end
     end
 
     context 'body does not return an array' do
-      let(:body) { { emails: { email: :whatever } } }
+      let(:body) { { emails: { email: { foo: 'bar' } } } }
       it do
-        expect(subject.all).to eq([:whatever])
+        expect(subject.all).to eq([{ foo: 'bar' }])
       end
     end
   end
