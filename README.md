@@ -28,6 +28,7 @@ Ou instale você mesmo:
 
 - [Login](#login)
 - [AcceptLegalTerms](#acceptlegalterms)
+- [GetExceptionStatus](#getexceptionstatus)
 - [GeneratePromise](#generatepromise)
 - [GetAccounts](#getaccounts)
 - [GetBoleto](#getboleto)
@@ -49,6 +50,14 @@ authorization_token = response.authorization_token
 
 ```ruby
 Credigy::LegalTermsAcceptance.new(authorization_token).call
+```
+
+### GetExceptionStatus
+
+```ruby
+response = Credigy::LegalTermsAcceptance.new(authorization_token, agreement_id: 12345).call
+response.exception_id # id da exceção provisionada
+response.status # status da exceção provisionada
 ```
 
 ### GeneratePromise
