@@ -1,3 +1,7 @@
+### 0.1.3 (12/12/2018)
+
+* Implementa `GetExceptionStatus`
+
 ### 0.1.2 (25/10/2018)
 
 * Implementa `GetInstallments`
