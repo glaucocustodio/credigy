@@ -55,7 +55,7 @@ Credigy::LegalTermsAcceptance.new(authorization_token).call
 ### GetExceptionStatus
 
 ```ruby
-response = Credigy::LegalTermsAcceptance.new(authorization_token, agreement_id: 12345).call
+response = Credigy::AgreementExceptionStatus.new(authorization_token, agreement_id: 12345).call
 response.exception_id # id da exceção provisionada
 response.status # status da exceção provisionada
 ```
