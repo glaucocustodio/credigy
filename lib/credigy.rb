@@ -5,6 +5,7 @@ require "credigy/version"
 
 require "credigy/config"
 require "credigy/account"
+require "credigy/agreement_exception_status"
 require "credigy/boleto"
 require "credigy/campaign_negotiation"
 require "credigy/email"
